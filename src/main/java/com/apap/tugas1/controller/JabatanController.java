@@ -49,17 +49,17 @@ public class JabatanController {
 	}
 	
 	@RequestMapping(value="/jabatan/hapus", method=RequestMethod.POST)
-	public String hapusJabatan(@RequestParam(value = "idJabatan") Long idJabatan, Model model) {
-		JabatanModel archive = jabatanService.getJabatanDetailById(idJabatan);
-		model.addAttribute("jabatan", archive);
-		return "ubahJabatan";
+	public String hapusJabatan(@ModelAttribute JabatanModel jabatan, Model model) {
+		jabatanService.hapusJabatan(jabatan);
+		return "hapusJabatan";
+	}
+		
+	@RequestMapping(value="/jabatan/viewall", method=RequestMethod.GET)
+	public String viewallJabatan(@ModelAttribute JabatanModel jabatan, Model model) {
+		model.addAttribute("jabatan", jabatan);
+		return "viewallJabatan";
 	}
 	
-	@RequestMapping(value="/jabatan/hapus")
-	private String hapusJabatanSubmit(@ModelAttribute JabatanModel jabatan) {
-		jabatanService.ubahJabatan(jabatan, jabatan.getId());
-		return "ubahJabatan";
-	}
 	
 	
 	

@@ -40,30 +40,31 @@
 						Lihat Detail Jabatan
 					</div>
 					<form th:action="@{/jabatan/view}" method="GET">
-					<div class="card-body">
-						<label for="idJabatan">Pilih Jabatan:</label>
-						<select name="idJabatan">
-							<option value="1">Kepala Dinas</option>
-							<option value="2">Kepala Bidang Humas</option>
-							<option value="3">Kepala Bidang Pengadaan Logistik</option>
-							<option value="4">Kepala Bidang Pengaduan dan Layanan Masyarakat</option>
-							<option value="5">Kepala Bidang Teknologi Informasi</option>
-							<option value="6">Kepala Bidang Kesekretariatan Umum</option>
-							<option value="7">Kepala Bidang Keuangan</option>
-							<option value="8">Kepala Bidang Perencanaan dan Keuangan</option>
-							<option value="9">Kepala Divisi Umum dan Kepegawaian</option>
-							<option value="10">Kepala Divisi Sarana dan Prasarana</option>
-							<option value="11">Kepala Divisi Pemberdayaan Masyarakat</option>
-							<option value="12">Kepala Divisi Tata Tertib dan Pengawasan</option>
-							<option value="13">Seksi Penyuluhan</option>
-							<option value="14">Seksi Pengawasan dan Pengendalian</option>
-							<option value="15">Seksi Pengembangan dan Penelitian</option>
-							<option value="16">Seksi Kerjasama dan Promosi</option>
-							<option value="17">Seksi Ketertiban Hukum</option>
-							<option value="18">Seksi Pengawasan dan Evaluasi</option>
-							<option value="19">Staf Bidang</option>
-							<option value="20">Staf Divisi</option>
-							</select>
+						<div class="card-body">
+							<label for="idJabatan">Pilih Jabatan:</label>
+								<select  class="form-control" required="required" name="idJabatan">
+							     	<option th:each="jabatan : ${listJabatan}" th:value="${jabatan.id}" th:text="${jabatan.nama}" ></option>
+						    	</select>
+							<p></p>
+							<button type="submit" class="btn btn-primary">Lihat</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">
+						Lihat Pegawai Termuda dan Tertua
+					</div>
+					<form th:action="@{/jabatan/view}" method="GET">
+						<div class="card-body">
+							<label for="idInstansi">Pilih Instansi:</label>
+								<select  class="form-control" required="required" name="idInstansi">
+							     	<option th:each="instansi : ${listJabatan}" th:value="${jabatan.id}" th:text="${jabatan.nama}" ></option>
+						    	</select>
 							<p></p>
 							<button type="submit" class="btn btn-primary">Lihat</button>
 						</div>
