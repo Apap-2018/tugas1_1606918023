@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.apap.tugas1.model.InstansiModel;
 import com.apap.tugas1.model.JabatanModel;
 import com.apap.tugas1.model.PegawaiModel;
 import com.apap.tugas1.model.ProvinsiModel;
@@ -37,7 +38,9 @@ public class PegawaiController {
 	@RequestMapping("/")
 	private String home(Model model) {
 		List<JabatanModel> listJabatan = jabatanService.getJabatan();
+		List<InstansiModel> listInstansi = instansiService.getInstansi();
 		model.addAttribute("listJabatan", listJabatan);
+		model.addAttribute("listInstansi", listInstansi);
 		return "home";
 	}
 	
@@ -47,18 +50,6 @@ public class PegawaiController {
 		Set<JabatanModel> jabatannya = archive.getTiapJabatan();
 		String namaInstansi = archive.getInstansi().getNama();
 		long gaji = pegawaiService.hitungGaji(archive);
-
-//		double gajiTertinggi = 0;
-//		for (JabatanModel jabatan : jabatannya) {
-//			if(jabatan.getGajiPokok() > gajiTertinggi) {
-//				gajiTertinggi = jabatan.getGajiPokok();
-//			}
-//		}
-//		String namaInstansi = archive.getInstansi().getNama();
-//		ProvinsiModel kodeProvinsi = archive.getInstansi().getProvinsi();
-//		double presentaseGaji = kodeProvinsi.getPresentaseTunjangan();
-//		double gaji = gajiTertinggi + ((presentaseGaji/100)*gajiTertinggi);
-		
 		model.addAttribute("pegawai", archive);
 		model.addAttribute("listJabatan", jabatannya);
 		model.addAttribute("namaInstansi", namaInstansi);

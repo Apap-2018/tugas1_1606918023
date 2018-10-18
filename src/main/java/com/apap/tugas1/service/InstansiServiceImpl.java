@@ -1,9 +1,12 @@
 package com.apap.tugas1.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.apap.tugas1.model.InstansiModel;
 import com.apap.tugas1.repository.InstansiDB;
 
 @Service
@@ -11,4 +14,9 @@ import com.apap.tugas1.repository.InstansiDB;
 public class InstansiServiceImpl implements InstansiService {
 	@Autowired
 	private InstansiDB instansiDb;
+
+	@Override
+	public List<InstansiModel> getInstansi() {
+		return instansiDb.findAll();
+	}
 }

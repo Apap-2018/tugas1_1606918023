@@ -63,7 +63,7 @@
 						<div class="card-body">
 							<label for="idInstansi">Pilih Instansi:</label>
 								<select  class="form-control" required="required" name="idInstansi">
-							     	<option th:each="instansi : ${listJabatan}" th:value="${jabatan.id}" th:text="${jabatan.nama}" ></option>
+							     	<option th:each="instansi : ${listInstansi}" th:value="${instansi.id}" th:text="${instansi.nama} + ' - ' + ${instansi.provinsi.nama}" ></option>
 						    	</select>
 							<p></p>
 							<button type="submit" class="btn btn-primary">Lihat</button>

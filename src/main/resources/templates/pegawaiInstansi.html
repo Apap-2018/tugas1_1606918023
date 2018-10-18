@@ -10,12 +10,12 @@
 	<body>
 	<nav th:replace="fragments/fragment :: navbar('SIPEG')"></nav>
 		
-		<center><div class="container-fluid"></div>
+		<div class="container-fluid"></div>
 		<br>
-		<center><h2 th:text="'Lihat Data Pegawai - ' + ${pegawai.nip}"></h2></center>
+		<h2 th:text="Data Pegawai Termuda"></h2>
 		<br>
 		
-		<form th:action="@{'/pegawai/ubah/' + ${pegawai.nip}}" th:object="${pegawai}" method="POST">
+		<form>
 			<table>
 				<tr>
 					<td width="200">NIP</td>
@@ -48,13 +48,49 @@
  						</ul>
  					</td>	
    				</tr>
-				<tr>
-					<td>Gaji</td>
-					<td th:text="'Rp.' + ${gajiTertinggi}"></td>
-				</tr>
 			</table>
-			<br>
-			<button type="submit" class="btn btn-primary">Ubah</button>
-		</form></center>
+		</form>
+		
+		
+		<div class="container-fluid"></div>
+		<br>
+		<h2 th:text="Data Pegawai Tertua"></h2>
+		<br>
+		
+		<form>
+			<table>
+				<tr>
+					<td width="200">NIP</td>
+					<td th:text=" ${pegawai.nip}" width="200"></td>
+				</tr>
+				<tr>
+					<td>Nama</td>
+					<td th:text=" ${pegawai.nama}"></td>
+				</tr>
+				<tr>
+					<td>Tempat Lahir</td>
+					<td th:text=" ${pegawai.tempatLahir}"></td>
+				</tr>
+				<tr>
+					<td>Tanggal Lahir</td>
+					<td th:text=" ${pegawai.tanggalLahir}"></td>
+				</tr>
+				<tr>
+					<td>Tahun Masuk</td>
+					<td th:text=" ${pegawai.tahunMasuk}"></td>
+				</tr>
+				<tr>
+					<td>Nama Instansi</td>
+					<td th:text=" ${namaInstansi} + ' - '+${pegawai.instansi.provinsi.nama}"></td>
+				</tr>
+				<tr>
+      				<td>Jabatan</td>
+      				<td><ul th:each="jabatannya : ${listJabatan}">
+ 							<li th:text="${jabatannya.nama}"/>	
+ 						</ul>
+ 					</td>	
+   				</tr>
+			</table>
+		</form>
 	</body>
 </html>
