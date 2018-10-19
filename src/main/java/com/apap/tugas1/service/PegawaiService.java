@@ -1,5 +1,8 @@
 package com.apap.tugas1.service;
 
+import java.util.List;
+
+import com.apap.tugas1.model.InstansiModel;
 import com.apap.tugas1.model.PegawaiModel;
 
 public interface PegawaiService {
@@ -7,4 +10,6 @@ public interface PegawaiService {
 	void ubahPegawai(PegawaiModel pegawai);
 	PegawaiModel getPegawaiDetailByNip(String nip);
 	long hitungGaji(PegawaiModel pegawai);
+	List<PegawaiModel> getPegawaiMuda(InstansiModel instansi);
+	List<PegawaiModel> getPegawaiTua(InstansiModel instansi);
 }

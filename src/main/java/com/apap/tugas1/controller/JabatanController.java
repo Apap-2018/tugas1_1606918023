@@ -60,10 +60,15 @@ public class JabatanController {
 	@RequestMapping(value="/jabatan/hapus", method=RequestMethod.POST)
 	public String hapusJabatan(@ModelAttribute JabatanModel jabatan, Model model, RedirectAttributes redirectAtt) {
 		JabatanModel jabatannya = jabatanService.getJabatanDetailById(jabatan.getId());
-		String message = "Jabatan " + jabatannya.getNama() + " berhasil dihapus!";
+		String message = "";
+		if (jabatannya.getTiapPegawai().size()==0) {
+			message = "Jabatan " + jabatannya.getNama() + " berhasil dihapus!";
+			jabatanService.hapusJabatanById(jabatan.getId());
+		} else {
+			message = "Jabatan " + jabatannya.getNama() + " memiliki pegawai, tidak bisa dihapus!";
+		}
 		redirectAtt.addFlashAttribute("message", message);
-		model.addAttribute("jabatan", jabatannya.getNama());
-		jabatanService.hapusJabatanById(jabatan.getId());
+		model.addAttribute("jabatan", jabatannya.getNama());		
 		return "redirect:/";
 	}
 		

@@ -11,13 +11,16 @@
 		<nav th:replace="fragments/fragment :: navbar('SIPEG')"></nav>
 		<br>
 		<center>
-		<h2>Detail Pegawai Termuda</h2>
+		<h2>Data Pegawai Termuda</h2>
 		<br>
+		<div class="row">
+		<div class="container-fluid">
+		<div class="col-md-6">
 		<form>
 			<table>
 				<tr>
 					<td width="200" height="40">NIP</td>
-					<td th:text=" ${pegawaiMuda.nip}" width="300"></td>
+					<td th:text=" ${pegawaiMuda.nip}" width="350"></td>
 				</tr>
 				<tr>
 					<td height="40">Nama</td>
@@ -37,27 +40,34 @@
 				</tr>
 				<tr>
 					<td height="40">Nama Instansi</td>
-					<td th:text=" ${namaInstansi} + ' - '+${pegawaiMuda.instansi.provinsi.nama}"></td>
+					<td th:text=" ${namaInstansiMuda} + ' - '+${pegawaiMuda.instansi.provinsi.nama}"></td>
 				</tr>
 				<tr>
       				<td height="40">Jabatan</td>
-      				<td><ul th:each="jabatannya : ${listJabatan}">
+      				<td><ul th:each="jabatannya : ${listJabatanMuda}">
  							<li th:text="${jabatannya.nama}"/>	
  						</ul>
  					</td>	
    				</tr>
 			</table>
+			</form>
+			</div>
+			</div>
+		</div>
 		<br>
 		<br>
 		<br>
 		<center>
 		<h2>Data Pegawai Tertua</h2>
 		<br>
+		<div class="row">
+		<div class="container-fluid">
+		<div class="col-md-6">
 		<form>
 			<table>
 				<tr>
 					<td width="200" height="40">NIP</td>
-					<td th:text=" ${pegawaiTua.nip}" width="300"></td>
+					<td th:text=" ${pegawaiTua.nip}" width="350"></td>
 				</tr>
 				<tr>
 					<td height="40">Nama</td>
@@ -77,16 +87,20 @@
 				</tr>
 				<tr>
 					<td height="40">Nama Instansi</td>
-					<td th:text=" ${namaInstansi} + ' - '+${pegawaiTua.instansi.provinsi.nama}"></td>
+					<td th:text=" ${namaInstansiTua} + ' - '+${pegawaiTua.instansi.provinsi.nama}"></td>
 				</tr>
 				<tr>
       				<td height="40">Jabatan</td>
-      				<td><ul th:each="jabatannya : ${listJabatan}">
+      				<td><ul th:each="jabatannya : ${listJabatanTua}">
  							<li th:text="${jabatannya.nama}"/>	
  						</ul>
  					</td>	
    				</tr>
 			</table>
+			</form>
+			</div>
+			</div>
+			</div>
 		</center>
 	</body>
 </html>

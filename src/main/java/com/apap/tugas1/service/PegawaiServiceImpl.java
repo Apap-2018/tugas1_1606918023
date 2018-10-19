@@ -1,11 +1,14 @@
 package com.apap.tugas1.service;
 
+import java.sql.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.apap.tugas1.model.InstansiModel;
 import com.apap.tugas1.model.JabatanModel;
 import com.apap.tugas1.model.PegawaiModel;
 import com.apap.tugas1.model.ProvinsiModel;
@@ -64,5 +67,17 @@ public class PegawaiServiceImpl implements PegawaiService {
 //		
 		pegawaiDb.save(pegawai);
 	}
+
+	@Override
+	public List<PegawaiModel> getPegawaiMuda(InstansiModel instansi) {
+		return pegawaiDb.findAllByInstansiOrderByTanggalLahirDesc(instansi);
+	}
+
+	@Override
+	public List<PegawaiModel> getPegawaiTua(InstansiModel instansi) {
+		return pegawaiDb.findAllByInstansiOrderByTanggalLahirAsc(instansi);
+	}
+	
+	
 	
 }
