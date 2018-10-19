@@ -14,7 +14,7 @@
 		<center>
 		<h2>Ubah Jabatan</h2>
 		<br>
-		<form th:action="@{/jabatan/ubah}" th:object="${jabatan}">
+		<form th:action="@{/jabatan/ubah}" th:object="${jabatan}" method="POST">
 			<table>
 				<input type="hidden" name="id" th:value="${jabatan.id}">
 				<tr>
@@ -37,3 +37,10 @@
 		</form></center>
 	</body>
 </html>
+
+<script th:inline="javascript">
+	var message = /*[[${message}]]*/ 'default';
+	if (message!=null){
+		alert(message);
+	}
+</script>

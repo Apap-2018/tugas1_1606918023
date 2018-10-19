@@ -36,8 +36,8 @@ public class JabatanServiceImpl implements JabatanService {
 	}
 
 	@Override
-	public void hapusJabatan(JabatanModel jabatan) {
-		jabatanDb.delete(jabatan);
+	public void hapusJabatanById(Long id) {
+		jabatanDb.deleteById(id);
 	}
 
 	@Override

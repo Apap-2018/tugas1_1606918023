@@ -13,8 +13,10 @@
 		<center>
 		<h2 th:text="'Detail Jabatan ' + ${jabatan.nama}"></h2>
 		<br>
-		<form th:action="@{'/jabatan/ubah'(idJabatan=${jabatan.id})}" th:object="${jabatan}" method="POST">
+		<form th:action="@{'/jabatan/ubah'}" th:object="${jabatan}" method="GET">
+		<input type="hidden" name="idJabatan" th:value="*{id}"/>
 			<table>
+				
 				<tr>
 					<td width="100" height="50">Nama</td>
 					<td width="330" th:text="': ' + ${jabatan.nama}"></td>
@@ -29,10 +31,12 @@
 				</tr>
 			</table>
 			<br>
+			
 			<button type="submit" class="btn btn-primary">Ubah</button>
 		</form>
 		<br>
 		<form th:action="@{/jabatan/hapus}" th:object="${jabatan}" method="POST">
+			<input type="hidden" th:field="*{id}"/>
 			<button value="submit" class="btn btn-primary">Hapus</button>
 		</form>
 		
