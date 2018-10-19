@@ -92,4 +92,15 @@ public class PegawaiController {
 		return "updatePegawai";
 	}
 	
+//	@RequestMapping(value="/pegawai/termuda-tertua", method=RequestMethod.GET)
+//	public String pegawaiTuaMuda(@RequestParam(value="idInstansi") Long idInstansi, Model model) {
+//		InstansiModel instansi = instansiService.getInstansiDetailById(idInstansi);
+//		
+//		
+//		PegawaiModel pegawai = pegawaiService.getPegawaiDetailByNip(nip);
+//		model.addAttribute("pegawaiMuda", pegawaiMuda);
+//		model.addAttribute("pegawaiTua", pegawaiTua);
+//		return "pegawaiTuaMuda";
+//	}
+	
 }

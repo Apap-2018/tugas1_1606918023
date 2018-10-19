@@ -14,7 +14,7 @@
 	<body>
 		<nav th:fragment="navbar(header)" class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a>
-				<img src="https://image.flaticon.com/icons/svg/827/827667.svg" alt="Pegawai" width="35" height="42" hspace="20">
+				<img src="https://image.flaticon.com/icons/svg/827/827667.svg" alt="Pegawai" width="35" height="42" hspace="25">
 			</a>
 			<a class="navbar-brand" th:href="@{/}" th:text="${header}"></a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -32,7 +32,7 @@
 						<a class="nav-link" th:href="@{/pegawai/cari}">Cari Pegawai</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" th:href="@{/jabatan/viewall}">Lihat Semua Jabatan</a>
+						<a class="nav-link" th:href="@{/jabatan/viewall}" method="GET">Lihat Semua Jabatan</a>
 					</li>
 				</ul>
 			</div>

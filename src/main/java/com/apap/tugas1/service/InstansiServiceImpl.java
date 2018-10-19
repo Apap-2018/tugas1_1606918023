@@ -20,4 +20,9 @@ public class InstansiServiceImpl implements InstansiService {
 	public List<InstansiModel> getInstansi() {
 		return instansiDb.findAll();
 	}
+
+	@Override
+	public InstansiModel getInstansiDetailById(Long id) {
+		return instansiDb.getOne(id);
+	}
 }

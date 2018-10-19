@@ -18,15 +18,4 @@ public class InstansiController {
 	
 	@Autowired
 	private ProvinsiService provinsiService;
-	
-//	@RequestMapping(value="/pegawai/termuda-tertua", method=RequestMethod.GET)
-//	public String viewJabatan(@RequestParam(value = "idInstansi") Long idInstansi, Model model) {
-//		//InstansiModel archive = instansiService
-//		
-//		
-//		model.addAttribute(null, attributeValue);
-//		model.addAttribute("jabatan", archive);
-//		return "pegawaiInstansi";
-//	}
-
 }

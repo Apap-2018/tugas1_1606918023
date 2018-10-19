@@ -5,7 +5,10 @@ import java.util.List;
 import com.apap.tugas1.model.InstansiModel;
 
 public interface InstansiService {
+	InstansiModel getInstansiDetailById(Long id);
 	List<InstansiModel> getInstansi();
-//	InstansiModel pegawaiTermuda(Long id);
+//	InstansiModel getPegawaiTermudaBy();
+	
+
 //	InstansiModel pegawaiTertua(Long id);
 }
