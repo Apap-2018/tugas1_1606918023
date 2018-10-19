@@ -23,8 +23,10 @@ public class InstansiController {
 //	public String viewJabatan(@RequestParam(value = "idInstansi") Long idInstansi, Model model) {
 //		//InstansiModel archive = instansiService
 //		
+//		
+//		model.addAttribute(null, attributeValue);
 //		model.addAttribute("jabatan", archive);
-//		return "viewJabatan";
+//		return "pegawaiInstansi";
 //	}
 
 }

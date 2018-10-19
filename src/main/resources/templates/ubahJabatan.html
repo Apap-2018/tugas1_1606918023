@@ -13,27 +13,27 @@
 		<br>
 		<center>
 		<h2>Ubah Jabatan</h2>
-		
+		<br>
 		<form th:action="@{/jabatan/ubah}" th:object="${jabatan}">
 			<table>
 				<input type="hidden" name="id" th:value="${jabatan.id}">
 				<tr>
-					<td>Nama</td>
+					<td width="100" height="50">Nama</td>
 					<td>
-						<input type="text" name="nama" th:value="${jabatan.nama}" />
+						<input type="text" name="nama" size="50" th:value="${jabatan.nama}" />
 					</td>
 				</tr>
 				<tr>
-					<td>Deskripsi</td>
-					<td><input type="text" name="deskripsi" th:value="${jabatan.deskripsi}" /></td>
+					<td height="50">Deskripsi</td>
+					<td><input type="text" name="deskripsi" size="50" th:value="${jabatan.deskripsi}" /></td>
 				</tr>
 				<tr>
-					<td>Gaji Pokok</td>
+					<td height="50">Gaji Pokok</td>
 					<td><input type="number" name="gajiPokok" th:value="${jabatan.gajiPokok}" /></td>
 				</tr>
 			</table>
 			<br>
-			<button type="submit">Simpan</button>
+			<button type="submit" class="btn btn-primary">Simpan</button>
 		</form></center>
 	</body>
 </html>

@@ -57,13 +57,38 @@ public class PegawaiController {
 		return "dataPegawai";
 	}
 	
-	@RequestMapping(value="/pegawai/tambah", method=RequestMethod.POST)
-	public String addPegawai(@ModelAttribute PegawaiModel pegawai) {
-		return "add";
+	@RequestMapping(value="/pegawai/tambah", method=RequestMethod.GET)
+	public String tambahPegawai(Model model) {
+		List<JabatanModel> listJabatan = jabatanService.getJabatan();
+		List<InstansiModel> listInstansi = instansiService.getInstansi();
+		List<ProvinsiModel> listProvinsi = provinsiService.getProvinsi();
+		model.addAttribute("pegawai", new PegawaiModel());
+		model.addAttribute("listJabatan", listJabatan);
+		model.addAttribute("listInstansi", listInstansi);
+		model.addAttribute("listProvinsi", listProvinsi);
+		return "tambahPegawai";
 	}
 	
-	@RequestMapping(value="/pegawai/update", method=RequestMethod.POST)
-	public String updatePegawai(@PathVariable(value="nip") String nip, Model model) {
+	@RequestMapping(value="/pegawai/tambah")
+	public String tambahPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
+		pegawaiService.tambahPegawai(pegawai);
+		model.addAttribute("pegawai", pegawai);
+		model.addAttribute("message", "ditambahkan");
+		return "suksesPegawai";
+	}
+	
+	@RequestMapping(value="/pegawai/ubah")
+	public String ubahPegawai(@RequestParam(value="nip") String nip, Model model) {
+		PegawaiModel pegawai = pegawaiService.getPegawaiDetailByNip(nip);
+		model.addAttribute("pegawai", pegawai);
+		return "updatePegawai";
+	}
+	
+	@RequestMapping(value="/pegawai/ubah", method=RequestMethod.POST)
+	public String ubahPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
+		
+		model.addAttribute("pegawai", pegawai);
+		model.addAttribute("message", "diubah");
 		return "updatePegawai";
 	}
 	

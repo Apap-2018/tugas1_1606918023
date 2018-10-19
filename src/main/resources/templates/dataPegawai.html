@@ -18,39 +18,39 @@
 		<form th:action="@{'/pegawai/ubah/' + ${pegawai.nip}}" th:object="${pegawai}" method="POST">
 			<table>
 				<tr>
-					<td width="200">NIP</td>
-					<td th:text=" ${pegawai.nip}" width="200"></td>
+					<td width="200" height="40">NIP</td>
+					<td th:text=" ${pegawai.nip}" width="300"></td>
 				</tr>
 				<tr>
-					<td>Nama</td>
+					<td height="40">Nama</td>
 					<td th:text=" ${pegawai.nama}"></td>
 				</tr>
 				<tr>
-					<td>Tempat Lahir</td>
+					<td height="40">Tempat Lahir</td>
 					<td th:text=" ${pegawai.tempatLahir}"></td>
 				</tr>
 				<tr>
-					<td>Tanggal Lahir</td>
+					<td height="40">Tanggal Lahir</td>
 					<td th:text=" ${pegawai.tanggalLahir}"></td>
 				</tr>
 				<tr>
-					<td>Tahun Masuk</td>
+					<td height="40">Tahun Masuk</td>
 					<td th:text=" ${pegawai.tahunMasuk}"></td>
 				</tr>
 				<tr>
-					<td>Nama Instansi</td>
+					<td height="40">Nama Instansi</td>
 					<td th:text=" ${namaInstansi} + ' - '+${pegawai.instansi.provinsi.nama}"></td>
 				</tr>
 				<tr>
-      				<td>Jabatan</td>
+      				<td height="40">Jabatan</td>
       				<td><ul th:each="jabatannya : ${listJabatan}">
  							<li th:text="${jabatannya.nama}"/>	
  						</ul>
  					</td>	
    				</tr>
 				<tr>
-					<td>Gaji</td>
-					<td th:text="'Rp.' + ${gajiTertinggi}"></td>
+					<td height="40">Gaji</td>
+					<td th:text="'Rp' + ${gajiTertinggi}"></td>
 				</tr>
 			</table>
 			<br>

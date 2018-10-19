@@ -9,6 +9,7 @@
 	
 	<body>
 	<nav th:replace="fragments/fragment :: navbar('SIPEG')"></nav>
-		<center><p>Data berhasil ditambahkan!</p></center>
+		<center><h2>Sukses!</h2>
+		<p th:text="'Pegawai dengan NIP ' + ${pegawai.nip} + ' berhasil ' + ${message}"></p></center>
 	</body>
 </html>

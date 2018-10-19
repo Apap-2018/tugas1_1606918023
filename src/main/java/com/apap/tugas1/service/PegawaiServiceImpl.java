@@ -35,5 +35,34 @@ public class PegawaiServiceImpl implements PegawaiService {
 		double gaji = gajiTertinggi + ((presentaseGaji/100)*gajiTertinggi);
 		return (long) gaji;
 	}
+
+	@Override
+	public void tambahPegawai(PegawaiModel pegawai) {
+		//jangan lupa tambahin set dulu buat NIP
+		
+		
+		pegawaiDb.save(pegawai);
+	}
+
+	@Override
+	public void ubahPegawai(PegawaiModel pegawai) {
+		PegawaiModel archive = pegawaiDb.findByNip(pegawai.getNip());
+		
+		archive.setNama(pegawai.getNama());
+		archive.setInstansi(pegawai.getInstansi());
+		archive.setTanggalLahir(pegawai.getTanggalLahir());
+		archive.setTempatLahir(pegawai.getTempatLahir());
+		archive.setTahunMasuk(pegawai.getTahunMasuk());
+		
+//		pegawai.getInstansi().getId();
+//		
+//		int nipLama = Integer.parseInt(pegawai.getNip());
+//		
+//		
+//		int nipBaru = 2;
+//		pegawai.setNip(nipBaru);
+//		
+		pegawaiDb.save(pegawai);
+	}
 	
 }

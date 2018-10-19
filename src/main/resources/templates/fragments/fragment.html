@@ -13,20 +13,23 @@
 	
 	<body>
 		<nav th:fragment="navbar(header)" class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#" th:text="${header}"></a>
+			<a>
+				<img src="https://image.flaticon.com/icons/svg/827/827667.svg" alt="Pegawai" width="35" height="42" hspace="20">
+			</a>
+			<a class="navbar-brand" th:href="@{/}" th:text="${header}"></a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
 						<a class="nav-link" th:href="@{/}">Home</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" th:href="@{/}">Tambah Pegawai</a>
+						<a class="nav-link" th:href="@{/pegawai/tambah}">Tambah Pegawai</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" th:href="@{/jabatan/tambah}">Tambah Jabatan</a>
+						<a class="nav-link" th:href="@{/jabatan/tambah}" >Tambah Jabatan</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" th:href="@{/}">Cari Pegawai</a>
+						<a class="nav-link" th:href="@{/pegawai/cari}">Cari Pegawai</a>
 					</li>
 					<li class="nav-item active">
 						<a class="nav-link" th:href="@{/jabatan/viewall}">Lihat Semua Jabatan</a>

@@ -18,14 +18,15 @@ public class JabatanController {
 	
 	@RequestMapping(value="/jabatan/tambah")
 	private String tambahJabatan(Model model) {
-		model.addAttribute("jabatan", new JabatanModel());
+		JabatanModel jabatan = new JabatanModel();
+		model.addAttribute("jabatan", jabatan);
 		return "addJabatan";
 	}
 	
 	@RequestMapping(value="/jabatan/tambah", method=RequestMethod.POST)
 	private String tambahJabatanSimpan(@ModelAttribute JabatanModel jabatan) {
 		jabatanService.tambahJabatan(jabatan);
-		return "addJabatanSukses";
+		return "tes";
 	}
 	
 	@RequestMapping(value="/jabatan/view", method=RequestMethod.GET)
@@ -45,11 +46,12 @@ public class JabatanController {
 	@RequestMapping(value="/jabatan/ubah")
 	private String ubahJabatanSubmit(@ModelAttribute JabatanModel jabatan) {
 		jabatanService.ubahJabatan(jabatan, jabatan.getId());
-		return "ubahJabatan";
+		return "tes";
 	}
 	
 	@RequestMapping(value="/jabatan/hapus", method=RequestMethod.POST)
 	public String hapusJabatan(@ModelAttribute JabatanModel jabatan, Model model) {
+		model.addAttribute("jabatan", jabatan.getNama());
 		jabatanService.hapusJabatan(jabatan);
 		return "hapusJabatan";
 	}

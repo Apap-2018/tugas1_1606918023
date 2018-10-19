@@ -23,7 +23,6 @@ import javax.validation.constraints.Size;
 @Table(name="jabatan")
 public class JabatanModel implements Serializable {
 	@Id
-	@Size(max=20)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Tambah Pegawai</title>
+		
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>	
+	</head>
+	
+	<body>
+	<nav th:replace="fragments/fragment :: navbar('SIPEG')"></nav>
+		
+		<br>
+		<center>
+		<h2>Tambah Pegawai</h2>
+		
+		<form th:action="@{/pegawai/tambah}" th:object="${pegawai}">
+			<table>
+				<tr>
+					<td width="200">Nama</td>
+					<td width="200"><input type="text" name="nama" size="55" th:value="${pegawai.nama}" /></td>
+				</tr>
+				<tr>
+					<td>Tempat Lahir</td>
+					<td><input type="text" name="tempatLahir" size="55" th:value="${pegawai.tempatLahir}" /></td>
+				</tr>
+				<tr>
+					<td>Tanggal Lahir</td>
+					<td><input type="date" name="tanggalLahir" th:value="${pegawai.tanggalLahir}" /></td>
+				</tr>
+				<tr>
+					<td>Tahun Masuk</td>
+					<td><input type="text" name="tahunMasuk " size="55" th:value="${pegawai.tahunMasuk}" /></td>
+				</tr>
+				<tr>
+					<td>Provinsi</td>
+					<td><select  class="form-control" name="idProvinsi">
+							<option th:each="provinsi : ${listProvinsi}" th:value="${provinsi.id}" th:text="${provinsi.nama}" ></option>
+					</select></td>
+				</tr>
+				<tr><td>Nama Instansi</td>
+					<td><select  class="form-control" name="idInstansi">
+							<option th:each="instansi : ${listInstansi}" th:value="${instansi.id}" th:text="${instansi.nama}" ></option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>Jabatan</td>
+					<td><select  class="form-control" name="idJabatan">
+							<option th:each="jabatan : ${listJabatan}" th:value="${jabatan.id}" th:text="${jabatan.nama}" ></option>
+					</select></td>
+				</tr>
+			</table>
+			<br>
+			<button type="submit" class="btn btn-primary">Simpan</button>
+		</form></center>
+	</body>
+</html>
