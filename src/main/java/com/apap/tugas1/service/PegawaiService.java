@@ -12,4 +12,5 @@ public interface PegawaiService {
 	long hitungGaji(PegawaiModel pegawai);
 	List<PegawaiModel> getPegawaiMuda(InstansiModel instansi);
 	List<PegawaiModel> getPegawaiTua(InstansiModel instansi);
+	Long getNip(PegawaiModel pegawai);
 }

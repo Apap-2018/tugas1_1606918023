@@ -19,16 +19,18 @@
 		<table id="table_id" class="display">
 			<thead>
 				<tr>
-					<th>Nama</th>
-					<th>Deskripsi</th>
-					<th>Gaji Pokok</th>
+					<th style="text-align: center">Nama</th>
+					<th style="text-align: center">Deskripsi</th>
+					<th style="text-align: center">Jumlah Pegawai</th>
+					<th style="text-align: center">Gaji Pokok</th>
 				</tr>
 			</thead>
 				<tbody>
 					<tr th:each="jabatan : ${listJabatan}">
 						<td th:text="${jabatan.nama}"></td>
 						<td th:text="${jabatan.deskripsi}"></td>
-						<td th:text="${jabatan.gajiPokok}"></td>
+						<td th:text="${jabatan.tiapPegawai.size()}" style="text-align: center"></td>
+						<td th:text="${jabatan.gajiPokok}" style="text-align: center"></td>
 					</tr>
 				</tbody>
 		</table>

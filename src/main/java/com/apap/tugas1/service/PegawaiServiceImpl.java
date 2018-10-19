@@ -77,7 +77,15 @@ public class PegawaiServiceImpl implements PegawaiService {
 	public List<PegawaiModel> getPegawaiTua(InstansiModel instansi) {
 		return pegawaiDb.findAllByInstansiOrderByTanggalLahirAsc(instansi);
 	}
-	
-	
+
+	@Override
+	public Long getNip(PegawaiModel pegawai) {
+//		String kodeInstansi = pegawai.getInstansi().getId() + "";
+//		
+//		
+//		
+//		Long nipFix=;
+		return null;
+	}
 	
 }
