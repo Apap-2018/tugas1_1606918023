@@ -99,15 +99,40 @@ public class PegawaiController {
 	@RequestMapping(value="/pegawai/ubah", method=RequestMethod.GET)
 	public String ubahPegawai(@RequestParam(value="nip") String nip, Model model) {
 		PegawaiModel pegawai = pegawaiService.getPegawaiDetailByNip(nip);
+		List<ProvinsiModel> listProvinsi = provinsiService.getProvinsi();
+		List<JabatanModel> listJabatan = jabatanService.getJabatan();
+		List<InstansiModel> listInstansi = instansiService.getInstansi();
+		Set<JabatanModel> jabatannya = pegawai.getTiapJabatan();
 		model.addAttribute("pegawai", pegawai);
+		model.addAttribute("listProvinsi", listProvinsi);
+		model.addAttribute("listJabatan", listJabatan);
+		model.addAttribute("listInstansi", listInstansi);
+		model.addAttribute("tiapJabatan", jabatannya);
 		return "ubahPegawai";
 	}
 	
-	@RequestMapping(value="/pegawai/ubah", method=RequestMethod.POST)
-	public String ubahPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
+	@RequestMapping(value="/pegawai/ubah", method=RequestMethod.POST, params= {"addRow"})
+	public String addRowPegawai(@ModelAttribute PegawaiModel pegawai, @RequestParam(value="nip") String nip, Model model) {
 		List<JabatanModel> listJabatan = jabatanService.getJabatan();
 		List<InstansiModel> listInstansi = instansiService.getInstansi();
 		List<ProvinsiModel> listProvinsi = provinsiService.getProvinsi();
+		if (pegawai.getTiapJabatan() == null) {
+			pegawai.setTiapJabatan(new HashSet<>());
+		}
+		pegawai.getTiapJabatan().add(new JabatanModel());
+		model.addAttribute("listJabatan", listJabatan);
+		model.addAttribute("listInstansi", listInstansi);
+		model.addAttribute("listProvinsi", listProvinsi);
+		return "ubahPegawai";
+	}
+	
+	@RequestMapping(value="/pegawai/ubah", method=RequestMethod.POST, params= {"update"})
+	public String ubahPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, @RequestParam(value="nip") String nip, Model model) {
+		List<JabatanModel> listJabatan = jabatanService.getJabatan();
+		List<InstansiModel> listInstansi = instansiService.getInstansi();
+		List<ProvinsiModel> listProvinsi = provinsiService.getProvinsi();
+		pegawai.setNip(nip);
+		pegawaiService.ubahPegawai(pegawai);
 		model.addAttribute("listJabatan", listJabatan);
 		model.addAttribute("listInstansi", listInstansi);
 		model.addAttribute("listProvinsi", listProvinsi);

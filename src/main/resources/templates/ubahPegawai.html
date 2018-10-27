@@ -9,55 +9,60 @@
 	
 	<body>
 	<nav th:replace="fragments/fragment :: navbar('SIPEG')"></nav>
-		
 		<br>
 		<center>
 		<h2>Ubah Pegawai</h2>
 		<br>
-		<form th:action="@{/pegawai/ubah}" th:object="${pegawai}" method="POST">
+		<form th:action="@{'/pegawai/ubah'}" th:object="${pegawai}" method="POST">
+		<input type="hidden" name="nip" th:value="*{nip}"/>
 			<table>
-				<tr>
+				<tr >
 					<td width="200" height="40">Nama</td>
-					<td width="200"><input type="text" name="nama" size="55" th:value="${pegawai.nama}" /></td>
+					<td width="200"><input class="form-control" type="text" name="nama" size="55" th:value="${pegawai.nama}" required="required"/></td>
 				</tr>
 				<tr>
 					<td height="40">Tempat Lahir</td>
-					<td><input type="text" name="tempatLahir" size="55" th:value="${pegawai.tempatLahir}" /></td>
+					<td><input class="form-control" type="text" name="tempatLahir" size="55" th:value="${pegawai.tempatLahir}" required="required"/></td>
 				</tr>
 				<tr>
 					<td height="40">Tanggal Lahir</td>
-					<td><input type="date" name="tanggalLahir" th:value="${pegawai.tanggalLahir}" /></td>
+					<td><input class="form-control" type="date" name="tanggalLahir" th:value="${pegawai.tanggalLahir}" required="required"/></td>
 				</tr>
 				<tr>
 					<td height="40">Tahun Masuk</td>
-					<td><input type="number" name="tahunMasuk " size="55" th:value="${pegawai.tahunMasuk}" /></td>
+					<td><input class="form-control" type="number" name="tahunMasuk " size="55" th:value="${pegawai.tahunMasuk}" required="required"/></td>
 				</tr>
 				<tr>
 					<td height="40">Provinsi</td>
 					<td><select  class="form-control" name="idProvinsi">
-							<option th:each="provinsi : ${listProvinsi}" th:value="${provinsi.id}" th:text="${provinsi.nama}" ></option>
+							<option th:each="provinsi : ${listProvinsi}" th:selected="${pegawai.instansi.provinsi.id}" th:value="${provinsi.id}" th:text="${provinsi.nama}" ></option>
 					</select></td>
 				</tr>
 				<tr><td height="40">Nama Instansi</td>
 					<td><select  class="form-control" name="idInstansi">
-							<option th:each="instansi : ${listInstansi}" th:value="${instansi.id}" th:text="${instansi.nama}" ></option>
+							<option th:each="instansi : ${listInstansi}" th:value="${instansi.id}" th:text="${instansi.nama}" th:selected="${pegawai.instansi.id}"></option>
 					</select></td>
 				</tr>
-				<tr>
+				
+<!-- 				<tr>
 					<td height="40">Jabatan</td>
 					<td><select  class="form-control" name="idJabatan">
-							<option th:each="jabatan : ${listJabatan}" th:value="${jabatan.id}" th:text="${jabatan.nama}" ></option>
+							<option th:each="jabatan : ${listJabatan}" th:value="${jabatan.id}" th:text="${jabatan.nama}" th:selected="${pegawai.tiapJabatan.id}"></option>
 					</select></td>
 				</tr>
-				<tr>
-					<td></td>
+ -->				
+				<tr th:each="jabatanPegawai, iterationStatus : ${jabatannya}">
+					<td height="40">Jabatan</td>
 					<td>
-		        	<button type="submit" name="addRow">Tambahkan Jabatan</button>
-		      	</td>
-		      </tr>
+						<select  class="form-control" th:field="*{jabatannya[__${iterationStatus.index}__]}" required="required" name="idJabatan">
+					     	<option th:each="jabatan : ${listJabatan}"  th:selected="${jabatanPegawai.id==jabatan.id}" th:value="${jabatan.id}" th:text="${jabatan.nama}" ></option>
+					   	</select>
+					</td>
+					<button type="submit" name="addRow">Tambah Jabatan</button>
+				</tr>
 			</table>
 			<br>
-			<button type="submit" class="btn btn-primary">Simpan</button>
+			<button type="submit" class="btn btn-primary" name="update">Simpan</button>
 		</form></center>
 	</body>
 </html>
