@@ -16,7 +16,6 @@
 		<form th:action="@{'/jabatan/ubah'}" th:object="${jabatan}" method="GET">
 		<input type="hidden" name="idJabatan" th:value="*{id}"/>
 			<table>
-				
 				<tr>
 					<td width="130" height="50">Nama</td>
 					<td width="330" th:text="${jabatan.nama}"></td>

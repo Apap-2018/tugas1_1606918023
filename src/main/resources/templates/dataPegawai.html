@@ -13,8 +13,7 @@
 		<center><div class="container-fluid"></div>
 		<br>
 		<center><h2 th:text="'Lihat Data Pegawai - ' + ${pegawai.nip}"></h2></center>
-		<br>
-		
+		<br>	
 		<form th:action="@{/pegawai/ubah}" th:object="${pegawai}">
 			<table>
 				<input type="hidden" name="nip" th:value="${pegawai.nip}">

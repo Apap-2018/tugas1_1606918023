@@ -65,11 +65,9 @@ public class PegawaiController {
 		List<JabatanModel> listJabatan = jabatanService.getJabatan();
 		List<InstansiModel> listInstansi = instansiService.getInstansi();
 		List<ProvinsiModel> listProvinsi = provinsiService.getProvinsi();
-		
 		PegawaiModel pegawai = new PegawaiModel();
 		pegawai.setTiapJabatan(new HashSet<>());
 		pegawai.getTiapJabatan().add(new JabatanModel());
-		
 		model.addAttribute("pegawai", pegawai);
 		model.addAttribute("listJabatan", listJabatan);
 		model.addAttribute("listInstansi", listInstansi);
@@ -77,13 +75,13 @@ public class PegawaiController {
 		return "tambahPegawai";
 	}
 	
-//	@RequestMapping(value="/pegawai/tambah", method=RequestMethod.POST)
-//	public String tambahPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
-//		pegawaiService.tambahPegawai(pegawai);
-//		model.addAttribute("pegawai", pegawai);
-//		model.addAttribute("message", "ditambahkan");
-//		return "suksesPegawai";
-//	}
+	@RequestMapping(value="/pegawai/tambah", method=RequestMethod.POST)
+	public String tambahPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
+		pegawaiService.tambahPegawai(pegawai);
+		model.addAttribute("pegawai", pegawai);
+		model.addAttribute("message", "ditambahkan");
+		return "suksesPegawai";
+	}
 	
 	@RequestMapping(value="/pegawai/tambah", params={"addRow"}, method = RequestMethod.POST)
 	public String tambahBarisJabatan(@ModelAttribute PegawaiModel pegawai, Model model, BindingResult bindingResult) {
@@ -160,6 +158,17 @@ public class PegawaiController {
 		model.addAttribute("listJabatanMuda", listJabatanMuda);
 		model.addAttribute("listJabatanTua", listJabatanTua);
 		return "pegawaiTuaMuda";
+	}
+	
+	@RequestMapping(value="/pegawai/cari")
+	public String cariPegawai(Model model) {
+		List<JabatanModel> listJabatan = jabatanService.getJabatan();
+		List<InstansiModel> listInstansi = instansiService.getInstansi();
+		List<ProvinsiModel> listProvinsi = provinsiService.getProvinsi();
+		model.addAttribute("listJabatan", listJabatan);
+		model.addAttribute("listInstansi", listInstansi);
+		model.addAttribute("listProvinsi", listProvinsi);
+		return "cariPegawai";
 	}
 	
 }

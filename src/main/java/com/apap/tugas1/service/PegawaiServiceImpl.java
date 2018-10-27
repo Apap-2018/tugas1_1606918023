@@ -44,8 +44,7 @@ public class PegawaiServiceImpl implements PegawaiService {
 	@Override
 	public void tambahPegawai(PegawaiModel pegawai) {
 		//jangan lupa tambahin set dulu buat NIP
-		
-		
+		pegawai.setNip(generateNip(pegawai));
 		pegawaiDb.save(pegawai);
 	}
 
