@@ -9,10 +9,14 @@
 	
 	<body>
 	<nav th:replace="fragments/fragment :: navbar('SIPEG')"></nav>
-		<br>
-		<center>
-		<h2>Ubah Pegawai</h2>
-		<br>
+		<div class="col-md">
+                <div class="card">
+                <br>
+				<center>
+                    <div class="card-header">
+                       <h2>Ubah Pegawai</h2>
+                    </div>
+                    <br>
 		<form th:action="@{'/pegawai/ubah'}" th:object="${pegawai}" method="POST">
 		<input type="hidden" name="nip" th:value="*{nip}"/>
 			<table>
@@ -44,21 +48,27 @@
 					</select></td>
 				</tr>
 				
-<!-- 				<tr>
+ 				<tr>
 					<td height="40">Jabatan</td>
 					<td><select  class="form-control" name="idJabatan">
-							<option th:each="jabatan : ${listJabatan}" th:value="${jabatan.id}" th:text="${jabatan.nama}" th:selected="${pegawai.tiapJabatan.id}"></option>
-					</select></td>
+							<option th:each="jabatan : ${listJabatan}" th:value="${jabatan.id}" th:text="${jabatan.nama}"></option>
+					</select>
+					</td>
 				</tr>
- -->				
-				<tr th:each="jabatanPegawai, iterationStatus : ${jabatannya}">
+ 				
+				<tr>
 					<td height="40">Jabatan</td>
-					<td>
+					<td th:each="jabatanPegawai, iterationStatus : ${jabatannya}">
 						<select  class="form-control" th:field="*{jabatannya[__${iterationStatus.index}__]}" required="required" name="idJabatan">
 					     	<option th:each="jabatan : ${listJabatan}"  th:selected="${jabatanPegawai.id==jabatan.id}" th:value="${jabatan.id}" th:text="${jabatan.nama}" ></option>
 					   	</select>
 					</td>
-					<button type="submit" name="addRow">Tambah Jabatan</button>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<button type="submit" name="addRow">Tambah Jabatan</button>
+					</td>
 				</tr>
 			</table>
 			<br>

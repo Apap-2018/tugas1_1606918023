@@ -6,11 +6,14 @@ import com.apap.tugas1.model.InstansiModel;
 import com.apap.tugas1.model.PegawaiModel;
 
 public interface PegawaiService {
-	void tambahPegawai(PegawaiModel pegawai);
-	void ubahPegawai(PegawaiModel pegawai);
+	PegawaiModel tambahPegawai(PegawaiModel pegawai);
+	PegawaiModel ubahPegawai(PegawaiModel pegawai);
 	PegawaiModel getPegawaiDetailByNip(String nip);
+	List<PegawaiModel> getSemuaPegawai();
 	long hitungGaji(PegawaiModel pegawai);
 	List<PegawaiModel> getPegawaiMuda(InstansiModel instansi);
 	List<PegawaiModel> getPegawaiTua(InstansiModel instansi);
 	String generateNip(PegawaiModel pegawai);
+	List<PegawaiModel> getPegawaiByInstansi(InstansiModel instansi);
+	
 }

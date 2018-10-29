@@ -18,19 +18,19 @@
 			<table>
 				<tr>
 					<td width="150" height="40">Nama</td>
-					<td width="200"><input class="form-control" type="text" name="nama" size="55" th:value="${pegawai.nama}" /></td>
+					<td width="200"><input class="form-control" type="text" name="nama" size="55" th:value="*{nama}" /></td>
 				</tr>
 				<tr>
 					<td height="40">Tempat Lahir</td>
-					<td><input class="form-control" type="text" name="tempatLahir" size="55" th:value="${pegawai.tempatLahir}" /></td>
+					<td><input class="form-control" type="text" name="tempatLahir" size="55" th:value="*{tempatLahir}" /></td>
 				</tr>
 				<tr>
 					<td height="40">Tanggal Lahir</td>
-					<td><input class="form-control" type="date" name="tanggalLahir" th:value="${pegawai.tanggalLahir}" /></td>
+					<td><input class="form-control" type="date" name="tanggalLahir" th:value="*{tanggalLahir}" /></td>
 				</tr>
 				<tr>
 					<td height="40">Tahun Masuk</td>
-					<td><input class="form-control" type="number" name="tahunMasuk " size="55" th:value="${pegawai.tahunMasuk}" /></td>
+					<td><input class="form-control" type="number" name="tahunMasuk " size="55" th:value="*{tahunMasuk}" /></td>
 				</tr>
 				<tr>
 					<td height="40">Provinsi</td>
@@ -40,7 +40,7 @@
 				</tr>
 				<tr><td height="40">Nama Instansi</td>
 					<td><select  class="form-control" name="idInstansi">
-							<option th:each="instansi : ${listInstansi}" th:value="${instansi.id}" th:text="${instansi.nama}" ></option>
+							<option th:each="instansi : ${listInstansi}" th:value="${instansi.id}" th:text="${instansi.nama} + ' - ' + ${instansi.provinsi.nama}" ></option>
 					</select></td>
 				</tr>
 				<tr>

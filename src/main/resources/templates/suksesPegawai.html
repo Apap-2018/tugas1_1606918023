@@ -10,6 +10,7 @@
 	<body>
 	<nav th:replace="fragments/fragment :: navbar('SIPEG')"></nav>
 		<center><h2>Sukses!</h2>
-		<p th:text="'Pegawai dengan NIP ' + ${pegawai.nip} + ' berhasil ' + ${message}"></p></center>
+		<p th:text="'Pegawai dengan NIP ' + ${pegawai.nip} + ' berhasil ' + ${message}"></p>
+		<a th:href="@{/}">kembali ke halaman depan</a></center>
 	</body>
 </html>
